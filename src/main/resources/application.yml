@@ -1,0 +1,34 @@
+server:
+  port: ${PORT:8083}
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_DB:creditrama_accounts}
+    username: ${POSTGRES_USERNAME:postgres}
+    password: ${POSTGRES_PASSWORD:docker}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  application:
+    name: profile
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers:
+            - ${KAFKA_BROKER:localhost}
+
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://${LOGIN_HOST:localhost}:9191/oauth/check_token
+    client:
+      client-id: mobile
+      client-secret: pin
