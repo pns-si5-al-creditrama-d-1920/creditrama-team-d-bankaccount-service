@@ -2,7 +2,7 @@ server:
   port: ${PORT:8083}
 spring:
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_DB:creditrama_accounts}
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_MULTIPLE_DATABASES:creditrama_accounts}
     username: ${POSTGRES_USERNAME:postgres}
     password: ${POSTGRES_PASSWORD:docker}
     driver-class-name: org.postgresql.Driver
@@ -28,7 +28,7 @@ spring:
 security:
   oauth2:
     resource:
-      token-info-uri: http://${LOGIN_HOST:localhost}:9191/oauth/check_token
+      token-info-uri: http://${AUTHORIZATION_HOST:localhost}:9191/oauth/check_token
     client:
       client-id: mobile
       client-secret: pin
