@@ -214,7 +214,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <repository>creditrama-d-bank-service</repository>
+                            <repository>creditrama-d-bankaccount-service</repository>
                             <tag>${project.version}</tag>
                             <buildArgs>
                                 <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
