@@ -2,7 +2,7 @@ server:
   port: ${PORT:8083}
 spring:
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_MULTIPLE_DATABASES:creditrama_accounts}
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_DB:creditrama_accounts}
     username: ${POSTGRES_USERNAME:postgres}
     password: ${POSTGRES_PASSWORD:docker}
     driver-class-name: org.postgresql.Driver
