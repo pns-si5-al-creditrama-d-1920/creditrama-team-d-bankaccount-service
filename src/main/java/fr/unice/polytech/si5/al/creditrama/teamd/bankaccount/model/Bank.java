@@ -2,7 +2,9 @@ package fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.model;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
