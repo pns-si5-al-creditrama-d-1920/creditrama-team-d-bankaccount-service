@@ -9,6 +9,14 @@ image:
 
 # define environment variables here as a map of key: value
 env:
+  POSTGRES_USERNAME: "postgres"
+  POSTGRES_PASSWORD: "docker"
+  POSTGRES_HOST: "postgresql.common.svc"
+  POSTGRES_DB: "creditrama_client"
+  PORT: "8080"
+  KAFKA_BROKER: "kafka-kafka-brokers.kafka.svc"
+  LOGIN_HOST: "creditrama-team-d-authorization-service.al-team-d.svc"
+  LOGIN_PORT: "8080"
 
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false
@@ -56,8 +64,8 @@ resources:
     cpu: 500m
     memory: 512Mi
   requests:
-    cpu: 400m
-    memory: 512Mi
+    cpu: 100m
+    memory: 256Mi
 probePath: /actuator/health
 livenessProbe:
   initialDelaySeconds: 60

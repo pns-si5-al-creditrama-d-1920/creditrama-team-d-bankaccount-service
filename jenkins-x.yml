@@ -1,1 +1,14 @@
 buildPack: maven
+pipelineConfig:
+  env:
+    - name: ORG
+      value: al-team-d
+    - name: REPO_OWNER
+      value: al-team-d
+  pipelines:
+    overrides:
+      - pipeline: release
+        stage: promote
+        name: jx-promote
+        step:
+          sh: jx promote -b -e github-alexis --timeout 1h --version \$(cat ../../VERSION)
