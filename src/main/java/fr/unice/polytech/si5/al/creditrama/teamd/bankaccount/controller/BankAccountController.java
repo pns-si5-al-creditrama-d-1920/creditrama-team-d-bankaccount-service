@@ -39,12 +39,12 @@ public class BankAccountController {
     }
 
     @PostMapping("clients/{id}/recipients")
-    public ResponseEntity<List<BankAccount>> getBankAccountsByIban(@PathVariable long id, @RequestBody List<String> ibans)  {
+    public ResponseEntity<List<BankAccount>> getBankAccountsByIban(@PathVariable long id, @RequestBody List<String> ibans) {
         return new ResponseEntity<>(bankAccountService.getBankAccountByIban(ibans), HttpStatus.OK);
     }
 
     //TODO SECURE THIS
-   @PatchMapping("accounts/{iban}")
+    @PatchMapping("accounts/{iban}")
     public ResponseEntity<BankAccount> updateBanAccount(@PathVariable String iban, @RequestParam Double balance) {
         return new ResponseEntity<>(bankAccountService.updateBalance(iban, balance), HttpStatus.OK);
     }

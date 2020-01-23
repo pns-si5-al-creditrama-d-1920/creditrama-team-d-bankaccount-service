@@ -1,5 +1,6 @@
 package fr.unice.polytech.si5.al.creditrama.teamd.bankaccount;
 
+import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.model.BankAccount;
 import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.repository.BankAccountRepository;
 import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.service.BankAccountService;
 import org.junit.Before;
@@ -11,43 +12,56 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("disable-kafka")
 @Transactional
-public class BankServiceBusinessNOP {
+public class BankAccountTests {
 
     @Autowired
-    private BankAccountService business;
+    private BankAccountService bankAccountService;
 
     @Autowired
     private BankAccountRepository bankAccountRepository;
 
+    private Long clientId;
+
     @Before
     public void setUp() {
-        /**
-         Client client = new Client(null, "nathan", "password", "n@gmail.com", true, true, true, true, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-         client = clientService.save(client);
-         clientId = client.getUserId();
-         bankAccountId = client.getBankAccounts().get(0).getAccountNumber();
-         **/
+        clientId = 42L;
     }
 
     @Test
-    public void test() {
-        System.out.println("coucou");
+    public void updateBalanceOfBankAccount() {
+        assertEquals(new ArrayList<>(), bankAccountRepository.findBankAccountByClient(clientId));
+        BankAccount account = bankAccountService.createAccount(clientId, 1000.0);
+
+        assertEquals(Optional.of(account), bankAccountRepository.findBankAccountByIban(account.getIban()));
+        assertTrue(bankAccountRepository.findAll().contains(account));
+        assertTrue(bankAccountRepository.findBankAccountByClient(clientId).contains(account));
+
+        assertEquals(Double.valueOf(1000.0), bankAccountRepository.findBankAccountByIban(account.getIban()).get().getBalance());
+        bankAccountService.updateBalance(account.getIban(), 200.0);
+        assertEquals(Double.valueOf(200.0), bankAccountRepository.findBankAccountByIban(account.getIban()).get().getBalance());
     }
-/**
- @Test public void manageBankAccountsOfClient() throws Exception {
- BankAccount expected = BankAccount.builder().balance(500.0).build();
- BankAccount received = business.createClientBankAccount(clientId, expected);
- String id = received.getAccountNumber();
 
- expected.setAccountNumber(id);
- Optional<BankAccount> actual = bankAccountRepository.findById(id);
- assertEquals(Optional.of(expected), actual);
+    /**
+     @Test public void manageBankAccountsOfClient() throws Exception {
+     BankAccount expected = BankAccount.builder().balance(500.0).build();
+     BankAccount received = business.createClientBankAccount(clientId, expected);
+     String id = received.getAccountNumber();
 
- Optional<Client> client = clientRepository.findById(clientId);
+     expected.setAccountNumber(id);
+     Optional<BankAccount> actual = bankAccountRepository.findById(id);
+     assertEquals(Optional.of(expected), actual);
+
+     Optional<Client> client = clientRepository.findById(clientId);
 
  assertTrue(client.get().getBankAccounts().contains(expected));
  assertEquals(business.retrieveClientBankAccounts(clientId), client.get().getBankAccounts());

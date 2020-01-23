@@ -54,7 +54,7 @@ public class BankAccountService {
         return bankAccountRepository.findBankAccountByIbanIn(iban);
     }
 
-    public BankAccount updateBalance(String iban, double balance){
+    public BankAccount updateBalance(String iban, double balance) {
         BankAccount bankAccountByIban = getBankAccountByIban(iban).orElseThrow(IllegalArgumentException::new);
         bankAccountByIban.setBalance(balance);
         bankAccountRepository.save(bankAccountByIban);
