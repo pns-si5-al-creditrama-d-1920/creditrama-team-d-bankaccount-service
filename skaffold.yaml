@@ -2,7 +2,7 @@ apiVersion: skaffold/v1beta2
 kind: Config
 build:
   artifacts:
-  - image: pns-si5-al-creditrama-d-1920/creditrama-team-d-bankaccount-service
+  - image: al-team-d/creditrama-team-d-bankaccount-service
     context: .
     docker: {}
   tagPolicy:
