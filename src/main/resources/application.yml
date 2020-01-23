@@ -24,10 +24,11 @@ spring:
         binder:
           brokers:
             - ${KAFKA_BROKER:localhost}
+
 security:
   oauth2:
     resource:
       token-info-uri: http://${AUTHORIZATION_HOST:localhost}:${AUTHORIZATION_PORT:9191}/oauth/check_token
-        client:
+    client:
       client-id: mobile
       client-secret: pin
