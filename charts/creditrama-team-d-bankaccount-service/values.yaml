@@ -15,7 +15,7 @@ env:
   POSTGRES_DB: "creditrama_client"
   PORT: "8080"
   KAFKA_BROKER: "kafka-kafka-brokers.kafka.svc"
-  AUTHORIZATION_HOST: "creditrama-team-d-authorization-service.al-team-d.svc"
+  AUTHORIZATION_HOST: "http://creditrama-team-d-authorization-service-al-team-d.apps.jboss.team"
   AUTHORIZATION_PORT: "8080"
 
 # enable this flag to use knative serve to deploy the app
