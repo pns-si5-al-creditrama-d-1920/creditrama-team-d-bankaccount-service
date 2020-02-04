@@ -12,7 +12,7 @@ env:
   POSTGRES_USERNAME: "postgres"
   POSTGRES_PASSWORD: "docker"
   POSTGRES_HOST: "postgresql.common.svc"
-  POSTGRES_DB: "creditrama_client"
+  POSTGRES_DB: "creditrama_accounts"
   PORT: "8080"
   KAFKA_BROKER: "kafka-kafka-brokers.kafka.svc"
   AUTHORIZATION_HOST: "http://creditrama-team-d-authorization-service-al-team-d.apps.jboss.team"
