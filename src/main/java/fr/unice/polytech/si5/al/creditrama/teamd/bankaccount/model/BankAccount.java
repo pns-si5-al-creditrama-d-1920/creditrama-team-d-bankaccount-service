@@ -37,7 +37,7 @@ public class BankAccount implements Serializable {
     private long client;
 
     @ElementCollection
-    private Set<Long> creditors;
+    private Set<Long> cards;
 
     public void addMoney(double amount) {
         this.balance += amount;

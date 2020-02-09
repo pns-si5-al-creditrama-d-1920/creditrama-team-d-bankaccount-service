@@ -8,8 +8,10 @@ import org.iban4j.Iban;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class BankAccountService {
@@ -39,6 +41,7 @@ public class BankAccountService {
                 .client(clientId)
                 .accountNumber(iban.getAccountNumber())
                 .bankCode(iban.getBankCode())
+                .cards(new HashSet<>())
                 .build();
     }
 
@@ -59,5 +62,17 @@ public class BankAccountService {
         bankAccountByIban.setBalance(balance);
         bankAccountRepository.save(bankAccountByIban);
         return bankAccountByIban;
+    }
+
+    public BankAccount addCard(String iban, Long number) {
+        Optional<BankAccount> optionalBankAccount = bankAccountRepository.findBankAccountByIban(iban);
+        if (!optionalBankAccount.isPresent()) {
+            return null;
+        }
+        BankAccount bankAccount = optionalBankAccount.get();
+        Set<Long> newCards = bankAccount.getCards();
+        newCards.add(number);
+        bankAccount.setCards(newCards);
+        return bankAccountRepository.save(bankAccount);
     }
 }

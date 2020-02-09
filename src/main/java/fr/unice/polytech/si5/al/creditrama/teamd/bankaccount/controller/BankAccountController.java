@@ -2,6 +2,7 @@ package fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.controller;
 
 import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.model.BankAccount;
 import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.model.BankAccountRequest;
+import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.model.CardRequest;
 import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,10 @@ public class BankAccountController {
         return new ResponseEntity<>(bankAccountService.getBankAccountsByClient(clientId), HttpStatus.OK);
     }
 
+    @PostMapping("accounts/{iban}/cards")
+    public ResponseEntity<BankAccount> addCard(@PathVariable("iban") String iban, @RequestBody CardRequest card) {
+        return new ResponseEntity<>(bankAccountService.addCard(iban, card.getNumber()), HttpStatus.OK);
+    }
 
     @GetMapping("accounts/{iban}")
     public ResponseEntity<Optional<BankAccount>> getBankAccountsByIban(@PathVariable("iban") String iban) {
