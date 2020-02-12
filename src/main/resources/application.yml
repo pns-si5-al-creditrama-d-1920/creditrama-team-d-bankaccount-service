@@ -17,7 +17,7 @@ spring:
           lob:
             non_contextual_creation: true
   application:
-    name: profile
+    name: bankaccount
   cloud:
     stream:
       kafka:
@@ -33,3 +33,13 @@ security:
     client:
       client-id: mobile
       client-secret: pin
+
+axon:
+  eventhandling:
+    processors:
+      MakeTransactionSagaProcessor:
+        mode: subscribing
+  axonserver:
+    servers: ${AXON_SERVER:localhost}
+    client-id: bankaccount-service
+    component-name: bankaccount-service
