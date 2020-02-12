@@ -125,6 +125,18 @@
             <artifactId>iban4j</artifactId>
             <version>3.2.1</version>
         </dependency>
+        <!-- Axon Framework !-->
+        <dependency>
+            <groupId>org.axonframework</groupId>
+            <artifactId>axon-spring-boot-starter</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+        <!-- core-api dependency for commands and events -->
+        <dependency>
+            <groupId>fr.unice.polytech.si5.al.creditrama.teamd</groupId>
+            <artifactId>core-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
