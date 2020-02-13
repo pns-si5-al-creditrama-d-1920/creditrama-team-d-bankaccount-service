@@ -1,10 +1,12 @@
 package fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.controller;
 
+import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.kafka.TransferStreams;
 import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.model.BankAccount;
 import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.model.BankAccountRequest;
 import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.model.CardRequest;
 import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
