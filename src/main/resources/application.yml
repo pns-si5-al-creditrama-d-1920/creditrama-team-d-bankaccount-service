@@ -33,13 +33,3 @@ security:
     client:
       client-id: mobile
       client-secret: pin
-
-axon:
-  eventhandling:
-    processors:
-      MakeTransactionSagaProcessor:
-        mode: subscribing
-  axonserver:
-    servers: ${AXON_SERVER:localhost}
-    client-id: bankaccount-service
-    component-name: bankaccount-service
