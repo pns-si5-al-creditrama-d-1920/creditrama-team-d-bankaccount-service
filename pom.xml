@@ -121,7 +121,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-stream-kafka</artifactId>
         </dependency> -->
-
         <!-- Iban Generator -->
         <dependency>
             <groupId>org.iban4j</groupId>
