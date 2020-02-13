@@ -33,3 +33,12 @@ security:
     client:
       client-id: mobile
       client-secret: pin
+
+
+axon:
+  eventhandling:
+    processors:
+      MakeTransactionSagaProcessor:
+        mode: subscribing
+  axonserver:
+    servers: ${AXON_SERVER:localhost}

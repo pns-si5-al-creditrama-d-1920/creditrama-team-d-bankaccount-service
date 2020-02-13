@@ -137,6 +137,11 @@
             <artifactId>core-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- Spring Cloud Streams -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-kafka</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
