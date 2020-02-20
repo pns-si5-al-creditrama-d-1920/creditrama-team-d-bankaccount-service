@@ -10,7 +10,7 @@
     </parent>
     <groupId>fr.unice.polytech.si5.al.creditrama.teamd</groupId>
     <artifactId>bankaccount-service</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.13</version>
     <name>bankaccount-service</name>
     <description>BankAccountService</description>
 
