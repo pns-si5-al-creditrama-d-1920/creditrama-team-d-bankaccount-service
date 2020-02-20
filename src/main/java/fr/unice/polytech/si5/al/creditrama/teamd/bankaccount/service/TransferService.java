@@ -11,6 +11,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.MimeTypeUtils;
 
 import java.util.Optional;
@@ -31,7 +32,8 @@ public class TransferService {
         this.transferStreams = transferStreams;
     }
 
-    private void transferMoney(TransferDTO transferDTO) {
+    @Transactional
+    void transferMoney(TransferDTO transferDTO) {
         System.out.println("Processing transfer...");
         Optional<BankAccount> sourceBankAccount = bankAccountService.getBankAccountByIban(transferDTO.getSourceIban());
         Optional<BankAccount> destBankAccount = bankAccountService.getBankAccountByIban(transferDTO.getDestIban());

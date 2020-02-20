@@ -6,7 +6,6 @@ import fr.unice.polytech.si5.al.creditrama.teamd.bankaccount.repository.BankAcco
 import org.iban4j.CountryCode;
 import org.iban4j.Iban;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
