@@ -15,6 +15,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.MimeTypeUtils;
 
 import java.util.HashSet;
@@ -92,6 +93,7 @@ public class BankAccountService {
         return bankAccountRepository.save(bankAccount);
     }
 
+    @Transactional
     private void transferMoney(TransferDTO transferDTO) {
         System.out.println("Processing transfer...");
         Optional<BankAccount> sourceBankAccount = getBankAccountByIban(transferDTO.getSourceIban());
