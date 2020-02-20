@@ -94,7 +94,7 @@ public class BankAccountService {
     }
 
     @Transactional
-    private void transferMoney(TransferDTO transferDTO) {
+    void transferMoney(TransferDTO transferDTO) {
         System.out.println("Processing transfer...");
         Optional<BankAccount> sourceBankAccount = getBankAccountByIban(transferDTO.getSourceIban());
         Optional<BankAccount> destBankAccount = getBankAccountByIban(transferDTO.getDestIban());
